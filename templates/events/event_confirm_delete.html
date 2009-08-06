@@ -1,0 +1,12 @@
+{% extends 'events/base.html' %}
+
+{% block body %}
+
+Are you sure that you want to delete the event, {{object}}?
+    <form action="" method="post">
+    <div>
+    <input type="hidden" name="post" value="yes" />
+    <input type="submit" value='DELETE' />
+    </div>
+    </form>
+{% endblock %}

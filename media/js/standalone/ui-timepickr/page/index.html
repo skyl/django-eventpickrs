@@ -1,0 +1,326 @@
+<html>
+    <head>
+        <title>jQuery.timepickr.js</title>
+        <link rel="Stylesheet" media="screen" href="reset.css" />
+        <link rel="Stylesheet" media="screen" href="styles.css" />
+        <link rel="Stylesheet" media="screen" href="../dist/themes/default/ui.core.css" />
+        <link rel="Stylesheet" media="screen" href="../dist/themes/default/ui.timepickr.css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="jquery.utils.js"></script>
+        <script type="text/javascript" src="jquery.strings.js"></script>
+        <script type="text/javascript" src="jquery.anchorHandler.js"></script>
+        <script type="text/javascript" src="jquery.ui.all.js"></script>
+        <script type="text/javascript" src="../src/ui.dropslide.js"></script>
+        <script type="text/javascript" src="../src/ui.timepickr.js"></script>
+
+
+        <script type="text/javascript">
+            $(function(){
+                //$('#test-1').timepickr({trigger: '#trigger-test'});
+              $('#demo-1').timepickr().focus();
+              $('#demo-2').timepickr({convention:12});
+              $('#demo-4').timepickr({convention:12});
+              $('#demo-1').next().find('ol').show().find('li:eq(2)').mouseover();
+              // temporary fix..
+              $('.ui-dropslide ol:eq(0) li:first').mouseover();
+              // apply theme
+              $('#demo-1').next().addClass('dark');
+              $('#demo-2').next().addClass('dark');
+            });
+        </script>
+    </head>
+    <body id="themeroller">
+        <div id="hd">
+            <div id="version">version <em>0.6.6</em></div>
+            <ul id="nv">
+                <li><a href="#s-intro">Introduction</a></li>
+                <li><a href="#s-documentation">Documentation</a></li>
+                <li><a href="#s-downloads">Downloads</a></li>
+                <li style="border-right:1px solid #333;"><a href="#s-about">About</a></li>
+            </ul>
+        </div>
+        <h2 id="title"><img src="logo.png" alt="jquery.timepickr" border="0"></h2>
+        <div id="splash">
+            <div id="demo">
+                <h2>Demo</h2>
+                <div id="d-demo-wrapper-1" class="demo-wrapper">
+                    <h4>24h time format / dark theme</h4>
+                    <label for="demo-1">Time</label> 
+                    <input id="demo-1" type="text" value="02:30" class="demo">
+                </div>
+                <div id="d-demo-wrapper-2" class="demo-wrapper">
+                    <h4>12h time format / dark theme</h4>
+                    <label for="demo-2">Time</label> 
+                    <input id="demo-2" type="text" value="02:30" class="demo">
+                </div>
+                <!--div id="d-demo-wrapper-3" class="demo-wrapper">
+                    <h4>24h time format / basic theme</h4>
+                    <label for="demo-3">Time</label> 
+                    <input id="demo-3" type="text" value="02:30" class="demo">
+                </div-->
+                <div id="d-demo-wrapper-4" class="demo-wrapper">
+                    <h4>12h time format / basic theme</h4>
+                    <label for="demo-4">Time</label> 
+                    <input id="demo-4" type="text" value="02:30" class="demo">
+                </div>
+            </div>
+            <ul id="demo-nav">
+                <li><a href="#d-demo-wrapper-1">24h format / dark</a></li>
+                <li><a href="#d-demo-wrapper-2">12h format / dark</a></li>
+                <!--li><a href="#d-demo-wrapper-3">24h format / basic</a></li-->
+                <li><a href="#d-demo-wrapper-4">12h format / basic</a></li>
+            </ul>
+        </div>
+        <div id="bd">
+            <div id="s-intro" class="subsection">
+                <h2><a name="intro">Introduction</a></h2>
+                <p>
+                    <em>jquery.timepickr</em> was created in a attempt to make the process of inputing time in a form as
+                    easy and natural as possible.
+                </p>
+                <h3>Goals</h3>
+                <ul>
+                    <li>Be unobtrusive</li>
+                    <li>Degrade gracefully</li>
+                    <li>Use maximum 2 clicks</li>
+                    <li>Intuitive keyboard navigation</li>
+                    <li>Be touch device friendly</li>
+                </ul>
+                <p style="margin-top:20px;"><img src="themeroller_ready_black_200px.gif" alt="jQuery UI ThemeRoller *Ready*" border="0" /></p>
+            </div>
+            <div id="s-downloads" class="subsection">
+                <h2><a name="downloads">Downloads</a></h2>
+                <h3>Google Code</h3>
+                <ul id="downloads-list">
+                    <li><a class="glass" href="http://code.google.com/p/jquery-utils/downloads/list"><img src="package.png" alt="Package" align="absmiddle">Download packages</a></li>
+                    <li><a class="glass" href="http://code.google.com/p/jquery-utils/source/browse/#svn/trunk/standalone/ui-timepickr/dist"><img src="script_code.png" alt="Package" align="absmiddle">Browse source code</a></li>
+                </ul>
+                <h3>Subversion</h3>
+                <pre>svn co http://jquery-utils.googlecode.com/svn/trunk/standalone/ui-timepickr/ jquery-timepickr</pre>
+                <h3>Known issues</h3>
+                <ul>
+                    <li>In 24h mode, <em>12h</em> does not swap to <em>00h</em> as it should when hovering am/pm</li>
+                    <li>Broken in IE6 (might take a while to fix, unless someone contribute a patch)</li>
+                    <li>I am aware that there is no such thing as <em>am</em> and <em>pm</em> in 24h convention</li>
+                    <li>Some people reported that it didn't work so well in the iPhone. Unfortunately I'm not cool, 
+                        I don't own a iPone and I don't plan to buy one in a near future. So unless a
+                        skilled iPhone owner fix it for us, it won't be fixed anytime soon.
+                    </li>
+                </ul>
+                <h3>Report a bug</h3>
+                <p>
+                    Please use <a href="http://code.google.com/p/jquery-utils/issues/list">the project's bug tracker</a> to report bugs, also check if the bug is not already reported.
+                </p>
+                <p>
+                To report a bug, click on <a href="http://code.google.com/p/jquery-utils/issues/list">New issue</a> and fill up the form. Don't forget to specify your OS and Browser (vendor and version). Finally, add <em>ui-timepickr</em> in labels.
+                </p>
+            </div>
+            <div id="s-documentation" class="subsection">
+                <h2><a name="documentation">Documentation</a></h2>
+                <h3>Basic usage</h3>
+                <pre>$(function(){
+    $('#test-1').timepickr({
+        handle: '#trigger-test'
+        convention: 12 });
+});</pre>
+                <h3>Complete reference</h3>
+                <p>
+                    Documentation and the complete list of options is available
+                    on the <a href="http://code.google.com/p/jquery-utils/wiki/UiTimepickr">project's wiki page</a> on Google code.
+                </p>
+            </div>
+            <div id="s-about" class="subsection">
+                <h2><a name="about">About</a></h2>
+                <h3>Author</h3>
+                <p>
+                My name is <a href="http://haineault.com">Maxime Haineault</a>, I work as project manager at <a href="http://centdessin.com/">Centdessin Design</a> where I manage a small web development department.
+                </p>
+                <p>
+                    I'm mostly developping this plugin in my spare times, so don't expect bugs to be fixed over night. If you want to help me improve
+                    this plugin, any kind of help would be greatly appreciated (bug fixing, documentation, new features, etc). 
+                </p>
+                <p>
+                    For that matter, if you really want a bug to be fixed quickly you can speed up the process by sending me your patches, I'll be 
+                    glad to merge them into trunk if the code looks decent and doesn't break the unit tests.
+                </p>
+                <p>
+                   <a href="mailto:haineault@gmail.com?subject=jquery.ui.timepickr" title="Contact me">Contact me</a>
+                </p>
+                <h3>Development roadmap</h3>
+                <table cellpadding="0" cellspacing="0" summary="Development milestones" class="milestones">
+                    <thead>
+                        <tr>
+                            <th>Release</th><th>Milestone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="major">
+                            <th>0.6</th>
+                            <td>
+                                <ul>
+                                    <li class="done">First official release</li>
+                                    <li class="done">Working 24h mode</li>
+                                    <li class="done">Firefox and WebKit support (Safari &amp; Google Chrome)</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="minor">
+                            <th>0.6.1</th>
+                            <td>
+                                <ul>
+                                    <li class="done">Input reset itself on blur when no click happens  (see resetOnBlur option)</li>
+                                    <li class="done">Applied themeroller standards <a href="http://www.filamentgroup.com/lab/developer_your_own_jquery_themeroller_ready_components/">described here</a>.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="minor">
+                            <th>0.6.2</th>
+                            <td>
+                                <ul>
+                                    <li class="done">Forgot to remove jquery.ui from the build .. it's now a bit more slick (290kb -> 24kb)</li>
+                                    <li class="done">Fixed a variable scope, thanks <a href="http://groups.google.com/group/jquery-en/msg/75b8229a6a0ebd3f">Jeffrey Kretz</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="minor">
+                            <th>0.6.3</th>
+                            <td>
+                                <ul>
+                                    <li class="done">Fixed a CSS and for loop bug, thanks to Christoph Müller-Spengler</li>
+                                    <li class="done">Minor code refactoring to follow jQuery UI standards</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="minor">
+                            <th>0.6.4</th>
+                            <td>
+                                <ul>
+                                    <li class="done">Updated for jQuery 1.3</li>
+                                    <li class="done">Updated for jQuery UI 1.6</li>
+                                    <li class="done">Updated against new jQuery Themeroller standards</li>
+                                    <li class="done">Refactored/optimized ui.dropslide.js</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="minor">
+                            <th>0.6.5</th>
+                            <td>
+                                <ul>
+                                    <li class="done">Merged jquery-utils downstream bug fixes</li>
+                                    <li class="done">Fixed IE bugs</li>
+                                    <li class="done">Code cleanup</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="minor">
+                            <th>0.6.6</th>
+                            <td>
+                                <ul>
+                                    <li class="done">Fixed bugs <a href="http://code.google.com/p/jquery-utils/issues/detail?id=12">#12</a>, <a href="http://code.google.com/p/jquery-utils/issues/detail?id=13">#13</a></li>
+                                    <li class="done">Fixed option resetOnBlur</li>
+                                    <li class="done">Created <a href="../test/">unit tests</a></li>
+                                    <li class="done">Removed jquery.arrayUtils.js dependency</li>
+                                    <li class="done">New packaging (jquery.timepicker.js &amp; ui.timepickr.js)</li>
+                                    <li class="done">Now including source files in distribution</li>
+                                    <li class="done">Minor refactoring and code cleanup</li>
+                                    <li class="done">Added default "system" theme</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="major">
+                            <th>0.7</th>
+                            <td>
+                                <ul>
+                                    <li>Polish base theme (follow UI styles)</li>
+                                    <li>Support for custom labels</li>
+                                    <li>Opera Support</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="major">
+                            <th>0.8</th>
+                            <td>
+                                <ul>
+                                    <li>Internet Explorer 7+ support</li>
+                                    <li>Keyboard navigation</li>
+                                    <li>Try integration with input masked</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="major">
+                            <th>0.9</th>
+                            <td>
+                                <ul>
+                                    <li>More demo and themes</li>
+                                    <li>Documentation overhaul</li>
+                                    <li>Internet Explorer 6 support</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr class="major">
+                            <th style="color:3679AE;">1.0</th>
+                            <td>
+                                <ul>
+                                    <li>First production ready release</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="copyright">Copyright (c) 2007-2008 Maxime Haineault (<a href="http://haineault.com/" target="_blank">haineault.com</a>)</div>
+        <div class="license">MIT License ~ <a href="http://www.opensource.org/licenses/mit-license.php" target="_blank">http://www.opensource.org/licenses/mit-license.php</a></div>
+        <div class="google-adsense"></div>
+        <script type="text/javascript">
+        $(function(){
+            // demos
+            $('div.demo-wrapper:not(:eq(0))').hide();
+            $.anchorHandler
+                .add(/#d\-.*/, function(){
+                    var node = $(this.hash);
+                    $('div.demo-wrapper').queue(function(){
+                        $(this).filter(':visible').fadeOut();
+                        $(this).dequeue();
+                    });
+                    setTimeout(function(){
+                        $(node).fadeIn();
+                        var match = node.attr('id').match(/\d+/);
+                        if (match) {
+                            $('#demo-'+ match[0]).focus().next().find('ol').show().find('li:eq(2)').mouseover();
+                        }
+                    }, 1000);
+                    window.scrollTo(0,0);
+                    return false; }, true);
+            // nav
+            //$('div.subsection:not(:eq(0))').hide();
+            //$.anchorHandler
+            //    .add(/#s\-.*/, function(){
+            //        var node = $(this.hash);
+            //        $('div.subsection').queue(function(){
+            //            $(this).filter(':visible').fadeOut();
+            //            $(this).dequeue();
+            //        });
+            //        setTimeout(function(){
+            //            $(node).fadeIn();
+            //        }, 1000);
+            //        window.scrollTo(0,0);
+            //        return false; }, true);
+            
+        });
+        </script>
+<div class="google-adsense">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3794135775449727";
+/* 728x90, date de création 09/10/08 (test) */
+google_ad_slot = "2799933858";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script><script type="text/javascript">if(window.location.href.match(/http\:\/\/haineault.com/)) {_uacct="UA-409568-21";urchinTracker();}</script>
+    </body>
+</html>
+
