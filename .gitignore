@@ -1,0 +1,8 @@
+geoip_data/*.dat
+*.pyc
+*.swp
+*.swo
+*~
+dev.db
+local_settings.py
+
