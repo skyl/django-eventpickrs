@@ -4,11 +4,13 @@ register = template.Library()
 
 from django.contrib.contenttypes.models import ContentType
 
-@register.inclusion_tag('events/tags/add_widget.html')
+@register.inclusion_tag('events/tags/add.html')
 def add_event_to(model_instance, css_id):
     ''' Tag instance with an event with dialog widget
 
-    {% add_event_to myModel 'css_id %}
+    {% add_event_to myModel 'css_id' %}
+    This is a javascript bit that requires jQuery.
+    On pinax you may put it in extra_body.
     '''
 
     ContentType.objects.get_for_model(model_instance)
@@ -18,3 +20,17 @@ def add_event_to(model_instance, css_id):
     model_name = model_instance._meta.module_name
 
     return locals()
+
+@register.inclusion_tag('events/tags/add_link.html')
+def event_link_add_to(model_instance, css_id):
+    ''' Produce the link for add_event_to javascript
+
+    {% event_link_add_to myModel 'css_id' %}
+    '''
+
+    app_label = model_instance._meta.app_label
+    model_name = model_instance._meta.module_name
+
+    return locals()
+
+
