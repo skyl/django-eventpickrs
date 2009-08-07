@@ -18,6 +18,8 @@ urlpatterns = patterns('',
     url(r'add/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<id>\d+)/$',\
             view='events.views.add', name='events_add'),
 
+    url(r'change/(?P<id>\d+)/', view='events.views.change',
+        name='events_change'),
 )
 '''
 

@@ -1,5 +1,6 @@
 from django.views.generic.list_detail import object_list, object_detail
-from django.views.generic.create_update import create_object, delete_object
+from django.views.generic.create_update import create_object, delete_object,\
+        update_object
 from django.contrib.auth.decorators import login_required
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, render_to_response
@@ -48,6 +49,7 @@ def create(request):
         form_class=EventForm,
     )
 
+@login_required
 def add(request, app_label, model_name, id):
     ''' Tag an event to another model object '''
 
@@ -82,4 +84,11 @@ def add(request, app_label, model_name, id):
 
     return render_to_response('events/event_form.html', context,\
             context_instance = RequestContext(request))
+
+@login_required
+def change(request, id):
+    return update_object(request,
+        form_class=EventForm,
+        object_id = id,
+    )
 
