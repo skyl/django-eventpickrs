@@ -6,10 +6,14 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404, render_to_response
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseNotFound, HttpResponseRedirect
+from django.db.models import Q
 from django.template import RequestContext
 
 from events.models import Event
 from events.forms import EventForm
+
+
+from django.contrib.auth.models import User
 
 def all(request):
     qs = Event.objects.all()
@@ -100,5 +104,25 @@ def for_day(request, year, month, day):
             queryset = events,
             template_name = "events/events_for_day.html",
             extra_context = locals(),
+    )
+
+
+def for_user(request, username):
+    ''' Returns response with all the events owned by or associated with a user
+
+    '''
+
+    user = get_object_or_404(User, username=username)
+
+    events = Event.objects.filter(
+            (Q(object_id=user.id)
+                &
+                Q(content_type=ContentType.objects.get_for_model(user))
+            )|
+            Q(owner=user)
+    )
+
+    return object_list(request,
+            queryset = events
     )
 

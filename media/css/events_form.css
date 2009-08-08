@@ -1,0 +1,7 @@
+form#create-event textarea#id_description {
+    height:4em;
+}
+
+div#div_id_owner, div#div_id_content_type, div#div_id_object_id {
+    display:none;
+}

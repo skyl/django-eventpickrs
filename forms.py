@@ -12,3 +12,11 @@ class EventForm(forms.ModelForm):
 
     class Meta:
         model = Event
+
+class EventFormWithMedia(EventForm):
+
+    class Media:
+        css = {'all':('events_form.css',), }
+        js = ('events_form.js',)
+
+
