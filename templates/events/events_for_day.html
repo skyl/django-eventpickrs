@@ -1,0 +1,10 @@
+{% extends 'events/base.html' %}
+
+{% block body %}
+<div id="for_day">
+{% for e in object_list %}
+{{e}}
+{% endfor %}
+</div>
+
+{% endblock %}

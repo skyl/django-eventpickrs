@@ -20,4 +20,7 @@ urlpatterns = patterns('',
 
     url(r'change/(?P<id>\d+)/', view='events.views.change',
         name='events_change'),
+
+    url(r'for_day/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$',\
+            view='events.views.for_day', name='events_for_day'),
 )

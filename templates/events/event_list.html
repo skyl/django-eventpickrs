@@ -1,11 +1,54 @@
 {% extends 'events/base.html' %}
 
+{% block extra_head %}
+ <link type="text/css" href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" />
+{% endblock %}
+
 {% block body %}
-
+<noscript>
 {% for event in object_list %}
-
   {{event}}
-
 {% endfor %}
+</noscript>
+
+
+<div id="calendar">
+</div>
+{% endblock %}
+
+{% block extra_body %}
+  <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery-ui.js"></script>
+  <script type="text/javascript" src="{{MEDIA_URL}}events/js/ui.datepicker.js"></script>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+    var datepicker = $("div#calendar").datepicker({
+        dateFormat: 'yy/mm/dd',
+        onSelect: function(dateText, inst) {
+            var dia = $('<div/>');
+
+            // FIXME how can I un-hardcode the date and use reverse?
+            dia.load( '/events/for_day/'+ dateText + '/' + ' #for_day', null, function(){
+                var title = "Events for " + dateText;
+                dia.dialog({
+                    width:650, height:525, maxHeight:1200, dialogClass:'dialog', position:['right','bottom'], 
+                    show:'slide', hide: 'slide', title:title, draggable:false, resizeable:false, 
+
+                    open: function() { 
+
+                    },
+
+                    beforeclose: function() { 
+                        dia.empty();
+                        dia.remove();
+                    }
+                });
+            });
+
+        }
+    });
+  });
+  </script>
+
 
 {% endblock %}

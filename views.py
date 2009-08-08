@@ -92,3 +92,13 @@ def change(request, id):
         object_id = id,
     )
 
+def for_day(request, year, month, day):
+    events = Event.objects.filter(start__year=year, start__month=month,
+            start__day=day)
+
+    return object_list(request,
+            queryset = events,
+            template_name = "events/events_for_day.html",
+            extra_context = locals(),
+    )
+
