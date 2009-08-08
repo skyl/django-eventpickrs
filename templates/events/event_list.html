@@ -25,10 +25,14 @@
     var datepicker = $("div#calendar").datepicker({
         dateFormat: 'yy/mm/dd',
         beforeShowDay: function(date){
-            console.log(date.format("yy/mm/dd"));
-            if (String(date) in [{% for e in object_list %}String({{e.start|date:'Y/m/d'}}) {% if not forloop.last %}, {% endif %}{% endfor %}]){
-
-                console.log(date);
+            //console.log(String($.datepicker.formatDate("yy/mm/dd", date)));
+            if ($.datepicker.formatDate("yy/mm/dd", date) in { 
+		{% for e in object_list %}
+		    "{{e.start|date:'Y/m/d'}}" : 1 
+			{% if not forloop.last %}, {% endif %}
+		{% endfor %} })
+	    { 
+                //console.log(date);
                 var a = new Array(true, '');
                 return a;
             }else{
@@ -47,13 +51,14 @@
                     show:'slide', hide: 'slide', title:title, draggable:false, resizeable:false, 
 
                     open: function() { 
-
+			var swert= 1;
                     },
 
                     beforeclose: function() { 
                         dia.empty();
                         dia.remove();
                     }
+
                 });
             });
 
