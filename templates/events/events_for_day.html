@@ -3,7 +3,10 @@
 {% block body %}
 <div id="for_day">
 {% for e in object_list %}
-{{e}}
+<a href="{{e.get_absolute_url}}">{{e.title}}</a>
+<p>
+{{e.description}}
+</p>
 {% endfor %}
 </div>
 

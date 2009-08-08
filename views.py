@@ -106,7 +106,6 @@ def for_day(request, year, month, day):
             extra_context = locals(),
     )
 
-
 def for_user(request, username):
     ''' Returns response with all the events owned by or associated with a user
 
@@ -121,6 +120,26 @@ def for_user(request, username):
             )|
             Q(owner=user)
     )
+
+    return object_list(request,
+            queryset = events
+    )
+
+def for_instance(request, app_label, model_name, id):
+    ''' Returns the events associated with the model instance
+
+    '''
+
+    try:
+        ct = ContentType.objects.get(\
+                app_label = app_label,
+                model = model_name)
+        obj = ct.get_object_for_this_type( id=id )
+
+    except:
+        return HttpResponseNotFound()
+
+    events = Event.objects.filter(content_type = ct, object_id = id)
 
     return object_list(request,
             queryset = events

@@ -1,0 +1,9 @@
+<a href="{% url events_for_instance app_label=app_label model_name=model_name id=model_instance.id %}"
+  {% if css_id %}
+    id="{{css_id}}"    
+  {% endif %}
+    class="add_point_link"
+    >See Events for {{model_instance}}
+</a>
+<img style="display:none;" class='loading' src='{{MEDIA_URL}}events/img/ajax-loader.gif'></img>
+

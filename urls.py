@@ -26,4 +26,7 @@ urlpatterns = patterns('',
 
     url(r'for_user/(?P<username>[-\w]+)/$',\
             view='events.views.for_user', name='events_for_user'),
+
+    url(r'for/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<id>\d+)/$',\
+            view='events.views.for_instance', name='events_for_instance'),
 )

@@ -33,4 +33,15 @@ def event_link_add_to(model_instance, css_id):
 
     return locals()
 
+@register.inclusion_tag('events/tags/link_to_events_for.html')
+def link_to_events_for(model_instance, css_class):
+    ''' Produce the link to the events detail page
+
+    {% link_to_events_for myModel 'css_class' %}
+    '''
+
+    app_label = model_instance._meta.app_label
+    model_name = model_instance._meta.module_name
+
+    return locals()
 
