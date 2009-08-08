@@ -82,7 +82,7 @@ def add(request, app_label, model_name, id):
     context = { 'form':form, 'object':obj, 'content_type':ct, }
     context.update(locals())
 
-    return render_to_response('events/event_form.html', context,\
+    return render_to_response('events/events_add.html', context,\
             context_instance = RequestContext(request))
 
 @login_required

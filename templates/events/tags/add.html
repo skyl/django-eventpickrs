@@ -16,8 +16,15 @@
 
                     open: function() { 
                         hiddenLink.show();
-                        $('img.loading').hide(); 
-                        
+                        $('img.loading').hide();
+
+                        var datepicker = $("input#id_start_0, input#id_end_0").datepicker({});
+
+                        var timepicker = $('input#id_start_1, input#id_end_1').timepickr({
+                            handle: '#trigger-test',
+                            convention: 24
+                        });
+
                     },
                     
                     beforeclose: function() { 
