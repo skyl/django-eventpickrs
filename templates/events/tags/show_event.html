@@ -1,7 +1,11 @@
 <div class="event-unit">
 
     <p>
-        <a href="{{event.get_absolute_url}}">{{event.title}}</a>
+    {% if truncate %}
+    <a href="{{event.get_absolute_url}}">{{event.title}}</a>
+    {% else %}
+    {{event.title}}
+    {% endif %}    
     </p>
     <p>
         {{event.start|date}}
@@ -9,7 +13,11 @@
 
     {% if event.description %}
     <p>
-        {{ event.description|truncatewords:50 }}
+    {% if truncate %}
+    {{ event.description|truncatewords:truncate }}
+    {% else %}
+    {{ event.description }}
+    {% endif %}
     </p>
     {% endif %}
 

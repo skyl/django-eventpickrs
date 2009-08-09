@@ -1,22 +1,15 @@
 {% extends 'events/base.html' %}
 
+{% load events_tags %}
+
 {% block body %}
 
 <div type="text" id="datepicker"></div>
 
 <div id="event-details">
-{{object.id}}<br>
-{{object}}<br>
-{{object.title}}<br>
-{{object.description}}<br>
-{{object.start|date}}<br>
-{{object.start.time}}<br>
-{{object.end|date}}<br>
-{{object.end.time}}<br>
-{{object.content_type}}<br>
-{{object.content_object}}<br>
-{{object.object_id}}<br>
-{{object.get_absolute_url}}<br>
+
+    {% show_event object request.user 0 %}
+
 </div>
 
 {% endblock %}
