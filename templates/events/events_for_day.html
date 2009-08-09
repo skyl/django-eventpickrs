@@ -1,12 +1,11 @@
 {% extends 'events/base.html' %}
 
+{% load events_tags %}
+
 {% block body %}
 <div id="for_day">
 {% for e in object_list %}
-<a href="{{e.get_absolute_url}}">{{e.title}}</a>
-<p>
-{{e.description}}
-</p>
+    {% show_event e request.user %}
 {% endfor %}
 </div>
 

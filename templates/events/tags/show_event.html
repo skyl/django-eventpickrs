@@ -1,17 +1,23 @@
 <div class="event-unit">
+
     <p>
         <a href="{{event.get_absolute_url}}">{{event.title}}</a>
     </p>
-{% if event.description %}
+    <p>
+        {{event.start|date}}
+    </p>
+
+    {% if event.description %}
     <p>
         {{ event.description|truncatewords:50 }}
     </p>
-{% endif %}
+    {% endif %}
 
-{% if is_owner %}
-<a href="{% url events_delete id=event.id %}">Delete this event</a>
-<a href="{% url events_change id=event.id %}">Change this event</a>
-{% endif %}
+    {% if is_owner %}
+    <a href="{% url events_delete id=event.id %}">Delete this event</a>
+    <a href="{% url events_change id=event.id %}">Change this event</a>
+    {% endif %}
+
 </div>
 
 <hr>
