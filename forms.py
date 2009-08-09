@@ -10,6 +10,8 @@ class EventForm(forms.ModelForm):
             )
     )
 
+    owner = forms.CharField( widget=forms.HiddenInput )
+
     class Meta:
         model = Event
 

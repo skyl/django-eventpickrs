@@ -74,11 +74,11 @@ def add(request, app_label, model_name, id):
         if form.is_valid():
             form.save()
 
-        try:
-            return HttpResponseRedirect(obj.get_absolute_url())
+            try:
+                return HttpResponseRedirect(obj.get_absolute_url())
 
-        except:
-            return HttpResponseRedirect(reverse('events_all'))
+            except:
+                return HttpResponseRedirect(reverse('events_all'))
 
     else:
         form = EventForm()
