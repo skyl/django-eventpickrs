@@ -3,11 +3,18 @@ from events.models import Event
 
 class EventForm(forms.ModelForm):
 
-    start = end = forms.DateTimeField(('%m/%d/%Y %H:%M',),
+    start = forms.DateTimeField(('%m/%d/%Y %H:%M',),
             widget=forms.SplitDateTimeWidget(
                 date_format='%m/%d/%Y',
                 time_format='%H:%M',
             )
+    )
+    end = forms.DateTimeField(('%m/%d/%Y %H:%M',),
+            widget=forms.SplitDateTimeWidget(
+                date_format='%m/%d/%Y',
+                time_format='%H:%M',
+            ),
+            required=False
     )
 
     class Meta:
