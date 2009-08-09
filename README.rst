@@ -47,6 +47,10 @@ In site_tabs.css you can add rules for
 Pinax Usage
 ===========
 
+In the template with the object(s) you want to tag add::
+
+    {% load events_tags %}
+
 Where you would like the link to add an event to a model instance::
 
     {% event_link_add_to myModelInstance 'css_id' %}
