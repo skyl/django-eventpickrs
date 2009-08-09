@@ -11,7 +11,8 @@ class Event(models.Model):
     description = models.TextField(blank=True)
     slug = models.SlugField(max_length=255, editable=False)
 
-    start = models.DateTimeField(verbose_name="Date and Time")
+    start = models.DateTimeField(verbose_name="Date and Time",
+            help_text="Checkit")
 
     owner = models.ForeignKey('auth.User')
 
