@@ -9,8 +9,8 @@ urlpatterns = patterns('',
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', view='events.views.detail',
         name="events_detail"),
 
-    url(r'^create/$', view='events.views.create',
-        name="events_create"),
+    #url(r'^create/$', view='events.views.create',
+    #    name="events_create"),
 
     url(r'^delete/(?P<id>\d+)/', view='events.views.delete',
         name='events_delete'),
