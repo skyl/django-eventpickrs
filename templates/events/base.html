@@ -1,4 +1,18 @@
 {% extends 'site_base.html' %}
 
+{% load i18n %}
+{% load events_tags %}
+
 {% block body_class %}events{% endblock %}
+
+{% block subnav %}
+    {% if user.is_authenticated %}
+        <ul>
+            <li><a href="{% url events_for_user username=request.user.username%} ">{% trans "Your events" %}</a></li>
+            <li><a href="{% events_add_url request.user %} ">{% trans "Add an Event" %}</a></li>
+        </ul>
+    {% else %}
+        &nbsp;
+    {% endif %}
+{% endblock %}
 

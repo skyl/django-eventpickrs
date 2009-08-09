@@ -10,7 +10,7 @@ from django.db.models import Q
 from django.template import RequestContext
 
 from events.models import Event
-from events.forms import EventForm
+from events.forms import EventForm#, EventAddForm
 
 
 from django.contrib.auth.models import User
@@ -67,12 +67,16 @@ def add(request, app_label, model_name, id):
         return HttpResponseNotFound()
 
     if request.method == 'POST':
-        request.POST.update( { 'owner':request.user.id, 'object_id':id,
-                'content_type':ct.id, 'content_obj': obj, } )
+        #request.POST.update( { 'owner':request.user.id, 'object_id':id,
+        #        'content_type':ct.id, 'content_obj': obj, } )
         form = EventForm(request.POST)
 
         if form.is_valid():
-            form.save()
+            ev = form.save(commit=False)
+            ev.owner = request.user
+            ev.object_id = obj.id
+            ev.content_type = ct
+            ev.save()
 
             try:
                 return HttpResponseRedirect(obj.get_absolute_url())

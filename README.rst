@@ -17,7 +17,7 @@ Requirements
 
     * Django 1.1+
 
-    * jQuery
+    * jQuery 1.3+
 
 This app is being built for pinax-0.7+.
 Your mileage may vary out of the box in other environments.
@@ -36,4 +36,12 @@ Install
 
     * syncdb
 
+For Pinax you can take the additional steps, 
+add to the right_tabs block in site_base.html::
 
+    <li id="tab_events"><a href="{% url events_all %}">{% trans "Events" %}</a></li>
+
+In site_tabs.css you can add rules for
+``body.events #tab_events a`` and ``body.events #tab_events``. 
+
+    

@@ -45,3 +45,16 @@ def link_to_events_for(model_instance, css_class):
 
     return locals()
 
+@register.inclusion_tag('events/tags/add_url.html')
+def events_add_url(model_instance):
+    ''' Produce the url to add events to a model
+
+    {% events_add_url myModel %} might return something like:
+    /events/add/auth/user/1/
+    '''
+
+    app_label = model_instance._meta.app_label
+    model_name = model_instance._meta.module_name
+
+    return locals()
+
