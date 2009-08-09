@@ -4,11 +4,6 @@
 {% block extra_head %}
  <link type="text/css" href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" />
  <link type="text/css" href="{{MEDIA_URL}}css/ui.timepickr.css" rel="stylesheet" />
- <style>
-     div#div_id_content_type {display:none; }
-     div#div_id_object_id {display:none; }
- </style>
-
 {% endblock %}
 
 
@@ -48,11 +43,6 @@
         handle: '#trigger-test',
         convention: 24
     });
-    /*
-    $('form#create-event').submit(function() {
-	$('input#id_start_1, input#id_end_1').val($('input#id_start_1, input#id_end_1').val()+':00');
-    });
-    */
   });
   </script>
 

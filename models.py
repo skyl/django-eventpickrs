@@ -12,7 +12,6 @@ class Event(models.Model):
     slug = models.SlugField(max_length=255, editable=False)
 
     start = models.DateTimeField()
-    end = models.DateTimeField(blank=True, null=True)
 
     owner = models.ForeignKey('auth.User')
 
