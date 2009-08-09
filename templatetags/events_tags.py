@@ -58,3 +58,18 @@ def events_add_url(model_instance):
 
     return locals()
 
+@register.inclusion_tag('events/tags/show_event.html')
+def show_event(event, user):
+    ''' Show the event summary, suitable for a list display
+
+    {% show_event event_instance user %}
+    '''
+
+    if event.owner == user:
+        is_owner = True
+
+    else:
+        is_owner = False
+
+    return locals()
+

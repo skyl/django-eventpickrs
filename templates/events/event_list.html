@@ -1,5 +1,6 @@
 {% extends 'events/base.html' %}
 
+{% load events_tags %}
 {% block extra_head %}
  <link type="text/css" href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" />
 {% endblock %}
@@ -13,6 +14,12 @@
 
 
 <div id="calendar">
+</div>
+<div id="event_list">
+{% for event in object_list %}
+  {% show_event event request.user %}
+{% endfor %}
+
 </div>
 {% endblock %}
 

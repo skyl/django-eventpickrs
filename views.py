@@ -98,6 +98,7 @@ def change(request, id):
     return update_object(request,
         form_class=EventForm,
         object_id = id,
+        extra_context = locals()
     )
 
 def for_day(request, year, month, day):
