@@ -44,4 +44,35 @@ add to the right_tabs block in site_base.html::
 In site_tabs.css you can add rules for
 ``body.events #tab_events a`` and ``body.events #tab_events``. 
 
+Pinax Usage
+===========
+
+Where you would like the link to add an event to a model instance::
+
+    {% event_link_add_to myModelInstance 'css_id' %}
+
+To make this link an jQuery dialog widget, in extra_body::
+
+    <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}events/js/ui.datepicker.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery.utils.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery.strings.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}events/js/ui.dropslide.js"></script>
+    <script type="text/javascript" src="{{MEDIA_URL}}events/js/ui.timepickr.js"></script>
+
+    <style>
+        div.ui-datepicker {z-index:10000000;}
+    </style>
+
+    {% add_event_to other_user 'css_id' %}
+ 
+Add css for the widget to extra_head::
+
+    {% include 'events/widgetCSS.html' %}
+
+  
+To add a link to all of the events for a model instance::
     
+    {% link_to_events_for myModelInstance 'css_class' %}
+
+
