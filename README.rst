@@ -55,7 +55,7 @@ Where you would like the link to add an event to a model instance::
 
     {% event_link_add_to myModelInstance 'css_id' %}
 
-To make this link an jQuery dialog widget, in extra_body::
+To make this link a jQuery dialog widget, in extra_body::
 
     <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery-ui.js"></script>
     <script type="text/javascript" src="{{MEDIA_URL}}events/js/ui.datepicker.js"></script>
@@ -68,12 +68,13 @@ To make this link an jQuery dialog widget, in extra_body::
         div.ui-datepicker {z-index:10000000;}
     </style>
 
-    {% add_event_to other_user 'css_id' %}
+    {% add_event_to myModelinstance 'css_id' %}
  
+Note that you can choose 'css_id' for these tags but they must match.
+
 Add css for the widget to extra_head::
 
     {% include 'events/widgetCSS.html' %}
-
   
 To add a link to all of the events for a model instance::
     
