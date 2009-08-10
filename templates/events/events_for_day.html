@@ -5,7 +5,7 @@
 {% block body %}
 <div id="for_day">
 {% for e in object_list %}
-    {% show_event e request.user %}
+    {% show_event e request.user 25 %}
 {% endfor %}
 </div>
 

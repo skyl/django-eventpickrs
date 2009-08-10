@@ -17,7 +17,7 @@
 </div>
 <div id="event_list">
 {% for event in object_list %}
-  {% show_event event request.user %}
+  {% show_event event request.user 25 %}
 {% endfor %}
 
 </div>
