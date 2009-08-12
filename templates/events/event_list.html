@@ -1,6 +1,8 @@
 {% extends 'events/base.html' %}
 
 {% load events_tags %}
+{% load uni_form %}
+
 {% block extra_head %}
  <link type="text/css" href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" />
 {% endblock %}
@@ -12,6 +14,19 @@
 {% endfor %}
 </noscript>
 
+<div style="float:right;">
+    <form class="uniForm" id="create-event" method="POST" enctype="multipart/form-data" 
+            action="{% url events_all %}">
+        <fieldset class="inlineLabels">
+            {{search_form|as_uni_form}}
+           <div class="form_block">
+                <input type="hidden" name="action" value="search" />
+                <input type="submit" value="Submit" />
+            </div>
+        </fieldset>
+    </form>
+
+</div>
 
 <div id="calendar">
 </div>

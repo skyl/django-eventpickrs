@@ -10,16 +10,35 @@ from django.db.models import Q
 from django.template import RequestContext
 
 from events.models import Event
-from events.forms import EventForm#, EventAddForm
+from events.forms import EventForm, SearchForm
 
 
 from django.contrib.auth.models import User
 
 def all(request):
-    qs = Event.objects.all()
-    context = {}
+    ''' Shows all of the events in the system
+
+    working on search, filtering, etc
+    '''
+    if request.method == 'POST':
+        action = request.POST.get('action', None)
+        if action == 'search':
+            search_form = SearchForm(request.POST)
+            terms = request.POST.get('terms', None)
+            q=Q()
+
+        for t in terms.split(" "):
+            q = q|Q(title__icontains=t)|Q(description__icontains=t)
+
+        qs = Event.objects.filter(q)
+
+    else:
+        qs = Event.objects.all()
+        search_form = SearchForm()
+
+    context = { 'search_form':search_form, }
     return object_list(request,
-            queryset=Event.objects.all(),
+            queryset=qs,
             template_name="events/event_list.html",
             extra_context=context,
     )
