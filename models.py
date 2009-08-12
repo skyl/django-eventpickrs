@@ -4,7 +4,6 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
-
 class Event(models.Model):
     ''' Simple event-tag with owner and content_object + meta_data '''
     title = models.CharField(max_length=255)
@@ -41,3 +40,5 @@ class Event(models.Model):
         ordering=( '-start', )
         unique_together = (('start', 'slug'),)
 
+
+#class FutureEventsManager(models.Manager):
