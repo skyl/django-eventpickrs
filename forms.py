@@ -12,7 +12,7 @@ class EventForm(forms.ModelForm):
 
 
 class SearchForm(forms.Form):
-    terms = forms.CharField(required=True)
+    terms = forms.CharField(required=False)
     action = forms.CharField(initial="search",widget=forms.HiddenInput)
 
 

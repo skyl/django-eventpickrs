@@ -13,7 +13,6 @@
   {{event}}
 {% endfor %}
 </noscript>
-
 <div style="float:right;">
     <form class="uniForm" id="create-event" method="POST" enctype="multipart/form-data" 
             action="{% url events_all %}">
@@ -27,9 +26,11 @@
     </form>
 
 </div>
-
+<div style="float:left;">
 <div id="calendar">
 </div>
+</div>
+<div style="clear:both;"></div>
 <div id="event_list">
 {% for event in object_list %}
   {% show_event event request.user 25 %}
