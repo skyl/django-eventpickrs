@@ -4,7 +4,8 @@
 {% load uni_form %}
 
 {% block extra_head %}
- <link type="text/css" href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="{{MEDIA_URL}}events/css/scrollable.css" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
@@ -31,20 +32,22 @@
 </div>
 </div>
 <div style="clear:both;"></div>
-<div id="event_list">
 
-    <ul id="event_list">
+<div class="scrollable">
+<div id="event_list" class="items">
     {% for event in object_list %}
-        {% show_event event request.user 25 %}
+        {% show_event event request.user 5 %}
     {% endfor %}
-    </ul>
-
 </div>
+</div>
+
 {% endblock %}
 
 {% block extra_body %}
   <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery-ui.js"></script>
   <script type="text/javascript" src="{{MEDIA_URL}}events/js/ui.datepicker.js"></script>
+  <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery.tools.js"></script>
+  <script type="text/javascript" src="{{MEDIA_URL}}events/js/jquery.mousewheel.js"></script>
 
   <script type="text/javascript">
   $(document).ready(function(){
@@ -90,6 +93,12 @@
 
         }
     });
+
+    $("div.scrollable").scrollable();
+    $("div.scrollable:eq(1) div.items div").click(function() { 
+        $(this).fadeOut().fadeIn(); 
+    }); 
+
   });
   </script>
 

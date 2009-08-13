@@ -58,8 +58,8 @@ def events_add_url(model_instance):
 
     return locals()
 
-@register.inclusion_tag('events/tags/show_event.html')
-def show_event(event, user, truncate):
+@register.inclusion_tag('events/tags/show_event.html', takes_context=True)
+def show_event(context, event, user, truncate):
     ''' Show the event summary, suitable for a list display
 
     {% show_event event_instance user 50 %} to truncate at 50
@@ -72,6 +72,8 @@ def show_event(event, user, truncate):
 
     else:
         is_owner = False
+
+    MEDIA_URL = context['MEDIA_URL']
 
     return locals()
 

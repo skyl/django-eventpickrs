@@ -1,4 +1,4 @@
-<li class="event-unit">
+<div class="event-unit">
 
     <p>
     {% if truncate %}
@@ -22,9 +22,9 @@
     {% endif %}
 
     {% if is_owner %}
-    <a href="{% url events_delete id=event.id %}">Delete this event</a>
-    <a href="{% url events_change id=event.id %}">Change this event</a>
+    <a href="{% url events_delete id=event.id %}"><img src="{{MEDIA_URL}}pinax/images/silk/icons/delete.png"></img></a>
+    <a href="{% url events_change id=event.id %}"><img src="{{MEDIA_URL}}pinax/images/silk/icons/pencil.png"></img></a>
     {% endif %}
 
-</li>
+</div>
 
