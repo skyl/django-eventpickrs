@@ -32,9 +32,12 @@
 </div>
 <div style="clear:both;"></div>
 <div id="event_list">
-{% for event in object_list %}
-  {% show_event event request.user 25 %}
-{% endfor %}
+
+    <ul id="event_list">
+    {% for event in object_list %}
+        {% show_event event request.user 25 %}
+    {% endfor %}
+    </ul>
 
 </div>
 {% endblock %}

@@ -33,7 +33,7 @@ def all(request):
         qs = Event.objects.filter(q)
 
     else:
-        qs = Event.objects.all()
+        qs = Event.futures.all()
         search_form = SearchForm()
 
     context = { 'search_form':search_form, }

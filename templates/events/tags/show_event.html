@@ -1,4 +1,4 @@
-<div class="event-unit">
+<li class="event-unit">
 
     <p>
     {% if truncate %}
@@ -8,7 +8,7 @@
     {% endif %}    
     </p>
     <p>
-        {{event.start|date}}
+        {{event.start|date:'F j, Y, P'}}
     </p>
 
     {% if event.description %}
@@ -26,6 +26,5 @@
     <a href="{% url events_change id=event.id %}">Change this event</a>
     {% endif %}
 
-</div>
+</li>
 
-<hr>
