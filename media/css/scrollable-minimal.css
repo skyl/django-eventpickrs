@@ -1,0 +1,22 @@
+
+
+/* single scrollable item */
+div.scrollable div.items div {
+	float:left;
+	
+	/* custom decoration */
+	text-align:center;
+	width:110px;
+	font-family: 'bitstream vera sans';
+	border:1px outset #ccc;
+	background-color: #ddd;
+	margin-right: 20px;	
+	-moz-border-radius:5px;
+}
+
+/* active item */
+div.scrollable div.items div.active {
+	border:1px inset #ccc;		
+	background-color:#fff;
+}
+

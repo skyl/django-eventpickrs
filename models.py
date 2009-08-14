@@ -62,6 +62,6 @@ class Event(models.Model):
         super(Event, self).save(force_insert, force_update)
 
     class Meta:
-        ordering=( '-start', )
+        ordering=( 'start', )
         unique_together = (('start', 'slug'),)
 

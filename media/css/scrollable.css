@@ -8,8 +8,8 @@ div.scrollable {
 	/* required settings */
 	position:relative;
 	overflow:hidden;	 	
-	width: 660px;	
-	height:200px;	
+	width: 90%;	
+	height:240px;	
 	
 	
 	/* custom decorations */
@@ -40,8 +40,8 @@ div.scrollable div.items div {
 	
 	/* custom decoration */
 	text-align:center;
-	width:110px;
-	padding:25px 0px;
+	width:160px;
+        height:200px;
 	font-family: 'bitstream vera sans';
 	border:1px outset #ccc;
 	background-color: #ddd;
@@ -54,4 +54,5 @@ div.scrollable div.items div.active {
 	border:1px inset #ccc;		
 	background-color:#fff;
 }
+
 
