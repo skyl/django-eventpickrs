@@ -6,6 +6,19 @@ from django.template.defaultfilters import slugify
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
 
+
+class EventGroup(models.Model):
+    event = models.OneToOneField('events.Event')
+    watchers = models.ManyToManyField('auth.User', blank=True, null=True)
+
+    def save(self, force_insert=False, force_update=False):
+        self.event.owner
+
+class UsersPool(models.Model):
+    user = models.OneToOneField('events.Event')
+    events = models.ManyToManyField('events.Event', blank=True, null=True,
+            related_name="pool_events")
+
 class FutureEventsManager(models.Manager):
     ''' Return all of the events, next one first
     '''
@@ -33,6 +46,9 @@ class Event(models.Model):
 
     owner = models.ForeignKey('auth.User')
 
+    watchers = models.ManyToManyField('auth.User',
+                    related_name="watched_events")
+
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey()
@@ -40,6 +56,10 @@ class Event(models.Model):
     objects = models.Manager()
     futures = FutureEventsManager()
     pasts = PastEventsManager()
+
+    def watchers(self):
+        e = EventGroup.objects.get(event=self)
+        return e.watchers
 
     def is_future(self):
         return self.start >= datetime.datetime.now()
@@ -64,4 +84,6 @@ class Event(models.Model):
     class Meta:
         ordering=( 'start', )
         unique_together = (('start', 'slug'),)
+
+
 
