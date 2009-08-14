@@ -167,7 +167,10 @@ def for_instance(request, app_label, model_name, id):
 
     events = Event.objects.filter(content_type = ct, object_id = id)
 
+    search_form = SearchForm()
+
     return object_list(request,
-            queryset = events
+            queryset = events,
+            extra_context = locals(),
     )
 
