@@ -1,7 +1,9 @@
 
 /* this makes it possible to add next button beside scrollable */
 div.scrollable {
-	float:left;	
+	float:left;
+        margin:0 auto;
+        width:90%;
 }
 
 /* prev, next, prevPage and nextPage buttons */
