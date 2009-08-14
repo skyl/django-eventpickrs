@@ -7,7 +7,6 @@
 <link type="text/css" href="{{MEDIA_URL}}css/jquery-ui.css" rel="stylesheet" />
 <link type="text/css" href="{{MEDIA_URL}}events/css/scrollable-minimal.css" rel="stylesheet" />
 <link type="text/css" href="{{MEDIA_URL}}events/css/scrollable-navig.css" rel="stylesheet" />
-<link type="text/css" href="{{MEDIA_URL}}events/css/scrollable.css" rel="stylesheet" />
 {% endblock %}
 
 {% block body %}
@@ -42,7 +41,7 @@
 <div class="scrollable">
 <div id="event_list" class="items">
     {% for event in object_list %}
-        {% show_event event request.user 5 %}
+        {% show_event event request.user 20 %}
     {% endfor %}
 </div>
 </div>
@@ -101,7 +100,7 @@
         }
     });
 
-    $("div.scrollable").scrollable();
+    $("div.scrollable").scrollable({'size':3,});
 
   });
   </script>

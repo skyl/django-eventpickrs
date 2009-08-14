@@ -1,6 +1,6 @@
-<div class="event-unit">
+<div class="event-unit" style="text-align:center;">
 
-    <div class="event-head" style="height:8%;margin:0.1em;">
+    <div class="event-head" style="height:20%;margin:0.3em;">
     {% if truncate %}
     <a href="{{event.get_absolute_url}}">{{event.title}}</a>
     {% else %}
@@ -8,11 +8,11 @@
     {% endif %}    
     </div>
 
-    <div style="background:#fff;height:10%;font-size:80%;margin: 0.1em;">
-        {{event.start|date:'F j, Y, f A'}}
+    <div style="background:#fff;height:10%;font-size:80%;margin: 0.3em;padding:0.3em;">
+        {{event.start|date:'f A, F j, Y'}}
     </div>
 
-    <div style="height:40%;padding:.25em;">
+    <div style="height:50%;padding:.25em;">
     {% if event.description %}
     {% if truncate %}
     {{ event.description|truncatewords:truncate }}
@@ -23,7 +23,7 @@
     </div>
 
     {% if is_owner %}
-    <div style="position:absolute; bottom:5px;height:1px;">
+    <div style="height:30px;width:50px; margin:0 auto;">
     <a href="{% url events_delete id=event.id %}"><img src="{{MEDIA_URL}}pinax/images/silk/icons/delete.png"></img></a>
     <a href="{% url events_change id=event.id %}"><img src="{{MEDIA_URL}}pinax/images/silk/icons/pencil.png"></img></a>
     </div>
