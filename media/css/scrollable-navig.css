@@ -41,7 +41,7 @@ a.next, a.nextPage {
 
 /* position and dimensions of the navigator */
 div.navi {
-	margin-left:328px;
+	margin:0 auto;
 	width:200px;
 	height:20px;
 }

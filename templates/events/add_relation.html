@@ -1,0 +1,18 @@
+{% extends 'events/base.html' %}
+
+{% load uni_form %}
+
+{% block body %}
+    <form class="uniForm" id="create-event" method="POST" enctype="multipart/form-data" 
+            action="{% url events_add_relation event_id=event_id user_id=request.user.id %}">
+        <fieldset class="inlineLabels">
+
+            {{form|as_uni_form}}
+
+           <div class="form_block">
+                <input type="submit" value="Submit" />
+            </div>
+        </fieldset>
+    </form>
+
+{% endblock %}

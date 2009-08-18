@@ -9,7 +9,7 @@ from django.http import HttpResponseNotFound, HttpResponseRedirect
 from django.db.models import Q
 from django.template import RequestContext
 
-from events.models import Event
+from events.models import Event, EventRelation
 from events.forms import EventForm, SearchForm
 
 
@@ -136,15 +136,14 @@ def for_user(request, username):
     '''
 
     user = get_object_or_404(User, username=username)
-
     events = Event.objects.filter(
-            (Q(object_id=user.id)
-                &
-                Q(content_type=ContentType.objects.get_for_model(user))
-            )|
-            Q(owner=user)
+            #(Q(object_id=user.id)
+            #&
+            #Q(content_type=ContentType.objects.get_for_model(user))
+            #)|
+            #Q(owner=user)
+            owner=user
     )
-
     search_form = SearchForm()
     return object_list(request,
             queryset = events,
@@ -174,3 +173,37 @@ def for_instance(request, app_label, model_name, id):
             extra_context = locals(),
     )
 
+def add_relation(request, event_id, user_id):
+
+
+    if int(user_id) == request.user.id:
+
+        try:
+            er = EventRelation.objects.get(event=Event.objects.get(id=event_id),
+                                  user = User.objects.get(id=user_id)
+                )
+            er.delete()
+
+            return HttpResponseRedirect(er.event.get_absolute_url())
+
+
+        except:
+            er = EventRelation.objects.create(
+                    event = Event.objects.get(id=event_id),
+                    user = User.objects.get(id=user_id)
+            )
+            return HttpResponseRedirect(er.event.get_absolute_url())
+
+
+    else:
+        return HttpResponseNotFound()
+
+def you_watch(request):
+
+    events = Event.objects.filter(eventrelation__user=request.user)
+
+    return object_list(
+            request,
+            queryset=events,
+            extra_context = locals()
+    )

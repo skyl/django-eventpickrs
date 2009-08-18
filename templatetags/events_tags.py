@@ -3,6 +3,7 @@ from django import template
 register = template.Library()
 
 from django.contrib.contenttypes.models import ContentType
+from events.models import Event, EventRelation
 
 @register.inclusion_tag('events/tags/add.html')
 def add_event_to(model_instance, css_id):
@@ -73,7 +74,31 @@ def show_event(context, event, user, truncate):
     else:
         is_owner = False
 
+    try:
+        er = EventRelation.objects.get(
+                event=event,
+                user=user
+        )
+    except:
+        er = None
+
     MEDIA_URL = context['MEDIA_URL']
+    request = context['request']
 
     return locals()
 
+@register.inclusion_tag('events/tags/add_event_relation.html', takes_context=True)
+def add_remove_event_relation(context, event, user):
+    '''render a form to post to url adding the event to one's calendar
+
+    '''
+
+    try:
+        EventRelation.objects.get(event=event, user=user)
+        exists = True
+    except:
+        exists = False
+
+    request = context['request']
+
+    return locals()

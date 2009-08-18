@@ -1,0 +1,6 @@
+
+{% if exists %}
+<a class="remove-from-calendar" href="{% url events_add_relation event.id request.user.id %}">UnWatch</a>
+{% else %}
+<a class="add-to-calendar" href="{% url events_add_relation event.id request.user.id %}">Watch</a>
+{% endif %}
