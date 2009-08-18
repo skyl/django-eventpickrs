@@ -1,5 +1,10 @@
 {% load events_tags %}
+{% load avatar_tags %}
 
+
+{% if not truncate %}
+<h1>Event Detail</h1>
+{% endif %}
 <div class="event-unit" style="text-align:center;">
 
     <div class="event-head" style="height:20%;margin:0.3em;">
@@ -7,8 +12,11 @@
     <a href="{{event.get_absolute_url}}">{{event.title|truncatewords:7}}</a>
     {% else %}
     <h2>{{event.title}}</h2>
+        by <a href="{{event.owner.get_absolute_url}}">{{event.owner}}
+        </a>
     {% endif %}    
     </div>
+
 
     <div style="background:#fff;height:10%;font-size:80%;margin: 0.3em;padding:0.3em;">
         {{event.start|date:'f A, F j'}}

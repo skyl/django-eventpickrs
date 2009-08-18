@@ -1,3 +1,5 @@
+import datetime
+
 from django.views.generic.list_detail import object_list, object_detail
 from django.views.generic.create_update import create_object, delete_object,\
         update_object
@@ -36,11 +38,12 @@ def all(request):
         qs = Event.futures.all()
         search_form = SearchForm()
 
-    context = { 'search_form':search_form, }
+    all=True
+
     return object_list(request,
             queryset=qs,
             template_name="events/event_list.html",
-            extra_context=context,
+            extra_context=locals(),
     )
 
 def detail(request, id, slug):
@@ -124,6 +127,8 @@ def for_day(request, year, month, day):
     events = Event.objects.filter(start__year=year, start__month=month,
             start__day=day)
 
+    for_day=True
+
     return object_list(request,
             queryset = events,
             template_name = "events/events_for_day.html",
@@ -144,6 +149,11 @@ def for_user(request, username):
             #Q(owner=user)
             owner=user
     )
+
+    for_user = True
+    if request.user.username == username:
+        is_me=True
+
     search_form = SearchForm()
     return object_list(request,
             queryset = events,
@@ -167,6 +177,8 @@ def for_instance(request, app_label, model_name, id):
     events = Event.objects.filter(content_type = ct, object_id = id)
 
     search_form = SearchForm()
+
+    for_instance = True
 
     return object_list(request,
             queryset = events,
@@ -201,6 +213,22 @@ def add_relation(request, event_id, user_id):
 def you_watch(request):
 
     events = Event.objects.filter(eventrelation__user=request.user)
+
+    you_watch=True
+
+    return object_list(
+            request,
+            queryset=events,
+            extra_context = locals()
+    )
+
+def archive(request):
+
+    events = Event.objects.filter(start__lte=datetime.datetime.now()).order_by('-start')
+
+    archive = True
+
+    search_form = SearchForm()
 
     return object_list(
             request,

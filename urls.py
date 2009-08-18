@@ -6,6 +6,9 @@ urlpatterns = patterns('',
     url(r'^$', view='events.views.all',
             name="events_all"),
 
+    url(r'^archive/$', view='events.views.archive',
+            name="events_archive"),
+
     url(r'^(?P<id>\d+)/(?P<slug>[-\w]+)/$', view='events.views.detail',
             name="events_detail"),
 

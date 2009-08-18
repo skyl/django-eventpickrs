@@ -28,12 +28,33 @@
     </form>
 </div>
 <div style="float:left;">
-<div id="calendar" style="margin:1em;"></div>
+<div id="calendar" style="margin:1em 3em 1em 1em;height:240px; width:280px;"></div>
 </div>
 
-<div id="directions" style="margin:1em;">
-    <p>These are the upcoming events for everyone on the site.</p>
-    <p>You can also <a href="">Browse the archive</a>
+<div id="directions" style="margin:1em;padding:1em;">
+    <p style="clear:right;">
+    {% if for_instance %}
+        These are the events for {{obj}}.
+    {% endif %}
+
+    {% if is_me %}
+        These are your events.
+    {% endif %}
+
+    {% if all %}
+    These are the upcoming events for everyone on the site.<br>
+    You can also <a href="{% url events_archive %}">Browse the archive</a>
+    {% endif %}
+
+    {% if you_watch %}
+        These are the events that you watch.
+    {% endif %}
+
+    {% if archive %}
+    These are the events in the past.  <a href="{% url events_all %}">See upcoming events</a>
+    {% endif %}
+
+    </p>
 </div>
 
 <div style="clear:both;"></div>
