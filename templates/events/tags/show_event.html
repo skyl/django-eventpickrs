@@ -3,11 +3,11 @@
 
 
 {% if not truncate %}
-<h1>Event Detail</h1>
+<h4>Event Detail</h4>
 {% endif %}
 <div class="event-unit" style="text-align:center;">
 
-    <div class="event-head" style="height:20%;margin:0.3em;">
+    <div class="event-head" style="height:30%;margin:0.3em;">
     {% if truncate %}
     <a href="{{event.get_absolute_url}}">{{event.title|truncatewords:7}}</a>
     {% else %}
@@ -22,7 +22,7 @@
         {{event.start|date:'f A, F j'}}
     </div>
 
-    <div style="height:50%;padding:.25em;">
+    <div style="height:45%;padding:.25em;">
     {% if event.description %}
     {% if truncate %}
     {{ event.description|truncatewords:truncate }}
