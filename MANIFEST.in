@@ -1,0 +1,9 @@
+#include CONTRIBUTORS.txt
+#include LICENSE.txt
+include MANIFEST.in
+#include README
+#include README.rst
+#recursive-include docs *
+recursive-include events *
+#recursive-include listings *
+#recursive-include uni_form/tests/test_project/test_app/templates *
