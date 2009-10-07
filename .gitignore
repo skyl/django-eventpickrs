@@ -5,4 +5,6 @@ geoip_data/*.dat
 *~
 dev.db
 local_settings.py
+egg-info
+dist
 
