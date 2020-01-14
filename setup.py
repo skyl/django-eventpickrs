@@ -25,7 +25,7 @@ setup(
     keywords='django,pinax,jquery-ui,datepickr',
     author='Skylar Saveland',
     author_email='skylar.saveland@gmail.com',
-    url='http://github.com/skyl/django-events',
+    url='http://github.com/skyl/django-eventpickrs',
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
